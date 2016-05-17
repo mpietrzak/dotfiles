@@ -1,0 +1,4 @@
+hardstatus string "%h [screen %n%?: %t%?]"
+shell -bash
+vbell off
+altscreen on
