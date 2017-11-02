@@ -7,10 +7,13 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'ShowTrailingWhitespace'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 
 call vundle#end()
 filetype plugin indent on
+syntax on
+
+let g:ale_open_list = 1
+let g:vim_json_syntax_conceal = 0
 
 set hidden
 set ignorecase smartcase
@@ -71,5 +74,13 @@ else
     map <C-t> :bn<CR>
     map <C-S-t> :bp<CR>
     map <C-p> :FZF<CR>
+endif
+
+if filereadable($HOME . "/opt/homebrew/opt/fzf/plugin/fzf.vim")
+    set rtp+=~/opt/homebrew/opt/fzf
+endif
+
+if filereadable($HOME . "/.fzf/plugin/fzf.vim")
+    set rtp+=~/.fzf
 endif
 
