@@ -1,32 +1,24 @@
-
 set nocompatible
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'VundleVim/Vundle.vim'
-Bundle 'ShowTrailingWhitespace'
-" Bundle 'scrooloose/syntastic'
-" Bundle 'hylang/vim-hy'
-Bundle 'rust-lang/rust.vim'
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
-Bundle 'raichoo/purescript-vim'
-Bundle 'elzr/vim-json'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'ShowTrailingWhitespace'
+Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 
-syntax on
+call vundle#end()
 filetype plugin indent on
-
-let g:syntastic_haskell_checkers=['ghc_mod', 'hlint']
-
-set rtp+=~/.fzf
 
 set hidden
 set ignorecase smartcase
 set incsearch nohlsearch
 set bs=2
 set history=1024
+set mouse=
+set noswapfile
 
 set sts=4 ts=4 sw=4 et
 
@@ -40,14 +32,15 @@ au FileType c setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
 au FileType cpp setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
 au FileType css setlocal ts=4 sts=4 sw=4 et ai
 au FileType haskell setlocal ts=4 sts=4 sw=4 et ai
+au BufNewFile,BufRead *.gradle setlocal ft=groovy
+au BufNewFile,BufRead *.crs setlocal ft=rust
 
-" Those are for Kabira (KPSA)
+" Those are for Kabira (KPSA) - https://github.com/mpietrzak/kis.vim
 au BufNewFile,BufRead *.soc setlocal ft=kis
 au BufNewFile,BufRead *.act setlocal ft=kis
 au BufNewFile,BufRead *.kds setlocal ft=kis
 au BufNewFile,BufRead *.osc setlocal ft=kis
 au BufNewFile,BufRead *.kes setlocal ft=kis
-au BufNewFile,BufRead *.gradle setlocal ft=groovy
 
 set scrolloff=8
 set wildmode=longest,list,full
@@ -56,13 +49,14 @@ set wildmenu
 set wildignore+=*.o,*.obj,.git,*.pyc
 
 if has('gui_running')
-        set guifont=Hack:h12
-        set guioptions-=m
-        set guioptions-=T
-        set lines=40
-        set columns=128
-	set visualbell
-	set t_vb=
+    set guifont=Hack:h12
+    set guioptions-=m
+    set guioptions-=T
+    set lines=40
+    set columns=128
+    set visualbell
+    set t_vb=
+    set bg=light
 else
     set bg=dark
 endif
@@ -74,7 +68,8 @@ if has("gui_macvim")
     macmenu File.Print key=<nop>
     map <D-p> :FZF<CR>
 else
+    map <C-t> :bn<CR>
+    map <C-S-t> :bp<CR>
     map <C-p> :FZF<CR>
 endif
-
 
