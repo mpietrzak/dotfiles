@@ -59,13 +59,14 @@ case $TERM in
         ;;
 esac
 
-autoload -Uz compinit
-compinit
-
 export ZLE_SPACE_SUFFIX_CHARS=$'&|'
 
-if which rg > /dev/null 2 > &1
+if which rg > /dev/null 2>&1
 then
     export FZF_DEFAULT_COMMAND='rg -l .'
 fi
 
+if [ -f "$HOME/.zshrc.local" ]
+then
+    source "$HOME/.zshrc.local"
+fi
