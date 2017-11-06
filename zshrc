@@ -25,6 +25,7 @@ export PATH=$HOME/opt/ghc-8.2.1/bin:$PATH
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/opt/pandoc/bin:$PATH
+export PATH="$HOME/opt/pypy2-5.9.0/bin:$PATH"
 export PATH="$HOME/opt/pypy-5.9-linux_x86_64-portable/bin:$PATH"
 export PATH="$HOME/opt/node-v8.4.0-linux-x64/bin:$PATH"
 
