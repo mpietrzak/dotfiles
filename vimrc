@@ -2,12 +2,10 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ShowTrailingWhitespace'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
-
 call vundle#end()
 filetype plugin indent on
 syntax on
@@ -15,15 +13,20 @@ syntax on
 let g:ale_open_list = 1
 let g:vim_json_syntax_conceal = 0
 
+set bs=2
 set hidden
+set history=1024
 set ignorecase smartcase
 set incsearch nohlsearch
-set bs=2
-set history=1024
 set mouse=
 set noswapfile
-
-set sts=4 ts=4 sw=4 et
+set scrolloff=8
+set sts=4
+set sw=4 et
+set ts=4
+set wildignore+=*.o,*.obj,.git,*.pyc
+set wildmenu
+set wildmode=longest,list,full
 
 au FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
 au FileType html setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai si indentexpr=
@@ -38,18 +41,6 @@ au FileType haskell setlocal ts=4 sts=4 sw=4 et ai
 au BufNewFile,BufRead *.gradle setlocal ft=groovy
 au BufNewFile,BufRead *.crs setlocal ft=rust
 
-" Those are for Kabira (KPSA) - https://github.com/mpietrzak/kis.vim
-au BufNewFile,BufRead *.soc setlocal ft=kis
-au BufNewFile,BufRead *.act setlocal ft=kis
-au BufNewFile,BufRead *.kds setlocal ft=kis
-au BufNewFile,BufRead *.osc setlocal ft=kis
-au BufNewFile,BufRead *.kes setlocal ft=kis
-
-set scrolloff=8
-set wildmode=longest,list,full
-set wildmenu
-
-set wildignore+=*.o,*.obj,.git,*.pyc
 
 if has('gui_running')
     set guifont=Hack:h12
