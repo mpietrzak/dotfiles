@@ -44,7 +44,7 @@ echo_titleprefix() {
     local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
     if [ "x$branch" != "x" ]; then branch="[$branch] "; fi
     print -Pn "\e]2;$_titleprefix$branch%n@%m: %~\a"
-    if [ "x$TMUX" != "x" ]; then print -Pn "\ek$_titleprefix$branch%n@%m: %~\e"; fi
+    if [ "x$TMUX" != "x" ]; then print -Pn "\ek$_titleprefix$branch%n@%m: %~\a"; fi
 }
 
 case $TERM in
@@ -71,3 +71,12 @@ if [ -f "$HOME/.zshrc.local" ]
 then
     source "$HOME/.zshrc.local"
 fi
+
+if [[ -o interactive ]]
+then
+    renice -n 5 -p $$ >/dev/null 2>&1
+fi
+
+autoload -Uz compinit
+compinit
+
