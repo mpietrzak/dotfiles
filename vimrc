@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
+Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }
