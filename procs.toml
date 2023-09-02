@@ -61,13 +61,6 @@ nonnumeric_search = false
 align = "Left"
 
 [[columns]]
-kind = "MultiSlot"
-style = "ByUnit"
-numeric_search = false
-nonnumeric_search = false
-align = "Right"
-
-[[columns]]
 kind = "Separator"
 style = "White|BrightBlack"
 numeric_search = false
@@ -136,8 +129,8 @@ abbr_sid = true
 theme = "Auto"
 
 [sort]
-column = 0
-order = "Ascending"
+column = 7
+order = "Descending"
 
 [docker]
 path = "unix:///var/run/docker.sock"
