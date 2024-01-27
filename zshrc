@@ -9,6 +9,7 @@ setopt APPEND_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
+setopt SHARE_HISTORY
 
 bindkey -e
 
