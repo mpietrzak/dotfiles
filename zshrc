@@ -16,6 +16,7 @@ bindkey -e
 export PS1='%n@%m %~ %# '
 
 alias date-time-now='date "+%Y%m%d-%H%M%S"'
+alias vn='ionice -c3 nice -n19'
 
 export EDITOR=vim
 export VISUAL=vim
