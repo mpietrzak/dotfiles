@@ -8,12 +8,13 @@ call plug#begin('~/.vim/plugged')
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
-Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'rust-lang/rust.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeFocus' }
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/ShowTrailingWhitespace'
+Plug 'jamessan/vim-gnupg'
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()
 
@@ -38,12 +39,15 @@ set wildignore+=*.o,*.obj,.git,*.pyc
 set wildmenu
 set wildmode=longest,list,full
 
-let g:ale_fixers = {'rust': ['rustfmt']}
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {'haskell': ['ormolu'], 'rust': ['rustfmt']}
+let g:ale_haskell_ormolu_executable = "/Users/mp/.cabal/bin/ormolu"
+let g:ale_haskell_ormolu_options="--stdin-input-file ."
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 1
-let g:ale_linters = {'rust': ['analyzer', 'cargo', 'rls']}
+let g:ale_linters = {'haskell': ['hls'], 'rust': ['analyzer']}
 let g:ale_open_list = 1
-let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_set_highlights = 0
 let g:ale_sign_column_always = 0
 let g:haskell_indent_case = 4
 let g:haskell_indent_do = 4
@@ -58,6 +62,9 @@ let g:purescript_indent_if = 2
 let g:rustfmt_autosave = 1
 let g:vim_json_syntax_conceal = 0
 let mapleader = "\<space>"
+
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
 
 " preserve function
 if !exists('*Preserve')
@@ -78,13 +85,15 @@ au BufNewFile,BufRead *.gradle setlocal ft=groovy
 au FileType c setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
 au FileType cpp setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
 au FileType css setlocal ts=4 sts=4 sw=4 et ai
-au FileType haskell setlocal ts=4 sts=4 sw=4 et
+au FileType haskell setlocal et sts=2 sw=2 ts=2
 au FileType html setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai si indentexpr=
 au FileType htmldjango setlocal ts=4 sts=4 sw=4 et ai
 au FileType javascript setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
 au FileType python setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
 au FileType xhtml setlocal ts=4 sts=4 sw=4 et
 au FileType xml setlocal tabstop=4 expandtab shiftwidth=4 softtabstop=4 ai
+
+" au BufWritePre *.purs :call Preserve("%!purty -")
 
 map <silent> <leader>b :Buffers<CR>
 map <silent> <leader>h :History<CR>
