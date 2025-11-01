@@ -1,0 +1,31 @@
+[general]
+working_directory = "/Users/mp"
+
+[colors.primary]
+background = "#000000"
+foreground = "#f4f4f4"
+
+[env]
+LANG = "en_US.UTF-8"
+LC_CTYPE = "en_US.UTF-8"
+TERM = "xterm-256color"
+
+[font]
+size = 15
+normal.family = "SF Mono"
+bold.style = "Semibold"
+
+[selection]
+save_to_clipboard = true
+
+[terminal.shell]
+program = "/bin/zsh"
+
+[window.dimensions]
+columns = 128
+lines = 42
+
+[window.padding]
+x = 4
+y = 4
+
